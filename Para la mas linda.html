@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para mi amada</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: black;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    #content {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 1.5em;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff4d6d;
+    }
+
+    .firework {
+      position: absolute;
+      animation: explode 2s ease-out infinite;
+      color: red;
+      font-size: 2em;
+    }
+
+    @keyframes explode {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2) translateY(-150px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(0);
+      }
+    }
+
+    #surprise {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      max-width: 90%;
+    }
+
+    #surprise.show {
+      display: flex;
+    }
+
+    #message {
+      font-size: 1.2em;
+      padding: 0 20px;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    #image {
+      max-width: 80%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 0 20px white;
+    }
+
+    .flash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      animation: flashAnim 0.5s ease-in-out;
+      z-index: 5;
+    }
+
+    @keyframes flashAnim {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <h1>Gracias por llegar a mi vida</h1>
+    <button onclick="showSurprise()">Presionar</button>
+
+    <div id="surprise">
+      <div id="message">
+        Hola, bonitaaaa!!! Quería darte de detalle pues ese hermoso tulipán y también un pequeño texto. Te lo doy porque en serio, en tan poco tiempo eres para mí la mujer más linda, con la cual por fin he logrado conectar de una manera espectacular y que ha valido la pena cada segundo y cada hora conversar contigo.
+        En serio me siento muy feliz por haberte conocido. En serio, eres una mujer increíble y muy hermosa, tanto por fuera como por dentro.
+        La verdad, no sé qué pase en el futuro, pero solo sé que quiero estar contigo, porque en serio una persona como tú —tan linda, inteligente, trabajadora y verdaderamente hermosa— no se encuentra dos veces en este mundo, y quiero conocerte, saber todo de ti, cada detalle. Pase lo que pase en el futuro, sé que será algo inexplicable contigo y solo contigo.
+        <br><br>
+        En este tiempo que hemos estado hablando, a pesar de no habernos conocido en persona, sentí una gran conexión contigo, y jamás había sentido algo así con alguien. No me queda más que darte las gracias por llegar a mi vida, porque en serio, el haberte conocido es lo mejor que me pudo haber pasado.
+        <br><br>
+        Si me lo permites, quisiera tener un montón de aventuras y momentos hermosos a tu lado. Gracias por llegar a mi vida, hermosa.
+        <br><br>
+        Te quiero, hermosa. ❤️ 🫰 🫶 💝
+      </div>
+      <img id="image" src="img/coreano.png" alt="Imagen especial">
+    </div>
+  </div>
+
+  <script>
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+      firework.textContent = Math.random() > 0.5 ? '❤️' :'❤️';
+      firework.style.left = Math.random() * 100 + 'vw';
+      firework.style.top = Math.random() * 100 + 'vh';
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 2000);
+    }
+
+    setInterval(createFirework, 300);
+
+    function showSurprise() {
+      // Flash de luz
+      const flash = document.createElement('div');
+      flash.classList.add('flash');
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 500);
+
+      // Mostrar sorpresa
+      document.getElementById('surprise').classList.add('show');
+    }
+  </script>
+</body>
+</html>
